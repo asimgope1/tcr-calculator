@@ -42,7 +42,7 @@ function App() {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
+    <div className="bg-gray-100 min-h-screen flex flex-col items-center ">
       <div className="max-w-md w-full mx-4 flex justify-around">
         <div className="w-1/2 pr-1">
           <Field
@@ -214,7 +214,7 @@ function App() {
         </div>
       
       </div>
-      <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleReset}>
+      <button className="mb-10 mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleReset}>
         Reset
       </button>
     </div>
