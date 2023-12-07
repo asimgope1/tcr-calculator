@@ -4,13 +4,13 @@ import Field from './components/Field';
 function App() {
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
-      <div className="max-w-md w-full flex justify-between">
+      <div className="max-w-md w-full mx-4 flex justify-between">
         {/* Left-aligned Fields */}
         <div className="w-1/2 pr-2">
           <Field
-            label="Bunglow type"
+            label="Bungalow type"
             type="text"
-            placeholder="Enter bunglow type"
+            placeholder="Enter bungalow type"
           />
           <Field
             label="Number of Floors"
