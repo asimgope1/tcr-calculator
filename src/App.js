@@ -1,23 +1,68 @@
 import React from 'react';
-import logo from './logo.svg';
+import Field from './components/Field';
 
 function App() {
   return (
-    <div className="bg-gray-100 min-h-screen flex items-center justify-center">
-      <header className="text-center">
-        <img src={logo} className="w-64 h-64 mx-auto mb-6" alt="logo" />
-        <p className="text-xl font-bold">
-          Edit <code className="bg-yellow-200 px-1">src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="text-blue-500 hover:underline block mt-4"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
+      <div className="max-w-md w-full flex justify-between">
+        {/* Left-aligned Fields */}
+        <div className="w-1/2 pr-2">
+          <Field
+            label="Bunglow type"
+            type="text"
+            placeholder="Enter bunglow type"
+          />
+          <Field
+            label="Number of Floors"
+            type="text"
+            placeholder="Enter number of floors"
+          />
+          <Field
+            label="Remoteness Factor"
+            type="text"
+            placeholder="Enter remoteness factor"
+          />
+          <Field
+            label="Land Rate at Purchase"
+            type="text"
+            placeholder="Enter land rate at purchase"
+          />
+          <Field
+            label="Land value sell factor"
+            type="text"
+            placeholder="Enter land value sell factor"
+          />
+        </div>
+        
+        {/* Right-aligned Fields */}
+        <div className="w-1/2 pl-2">
+          <Field
+            label="Legal Charge"
+            type="text"
+            placeholder="Enter legal charge"
+          />
+          <Field
+            label="Filling Rate"
+            type="text"
+            placeholder="Enter filling rate"
+          />
+          <Field
+            label="Project Management Cost"
+            type="text"
+            placeholder="Enter project management cost"
+          />
+          <Field
+            label="Unit Filling Depth"
+            type="text"
+            placeholder="Enter unit filling depth"
+          />
+          <Field
+            label="Facing Type"
+            type="text"
+            placeholder="Enter facing type"
+          />
+        </div>
+      </div>
     </div>
   );
 }
