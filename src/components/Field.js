@@ -1,6 +1,14 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
-function Field({ label, type, placeholder, value, onChange }) {
+interface FieldProps {
+  label: string;
+  type: string;
+  placeholder: string;
+  value: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+}
+
+const Field: React.FC<FieldProps> = ({ label, type, placeholder, value, onChange }) => {
   return (
     <div className="mb-4">
       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={label}>
@@ -13,10 +21,10 @@ function Field({ label, type, placeholder, value, onChange }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
-        style={{ width: '100%' }} 
+        style={{ width: '100%' }}
       />
     </div>
   );
-}
+};
 
 export default Field;
