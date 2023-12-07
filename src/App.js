@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import Field from './components/Field';
 
 function App() {
-  const [fieldValues, setFieldValues] = useState({
+
+
+  const initialFieldValues = {
     bungalowType: '',
     numberOfFloors: '',
     remotenessFactor: '',
@@ -13,7 +15,20 @@ function App() {
     projectManagementCost: '',
     unitFillingDepth: '',
     facingType: '',
-  });
+    totalLandArea: '',
+    totalBuiltUpArea: '',
+    baseBuiltUpRate: '',
+    currentLandRate: '',
+    developmentCharge: '',
+    adjustmentFactor: '',
+    cornerFactor: '',
+    unitAdjustmentFactor: '',
+    cornerFacing: '',
+    additionalSemiFinished: '',
+  };
+  
+  const [fieldValues, setFieldValues] = useState(initialFieldValues
+    );
 
   const handleInputChange = (fieldName: string, value: string) => {
     setFieldValues({
@@ -22,11 +37,15 @@ function App() {
     });
   };
 
+  const handleReset = () => {
+    setFieldValues(initialFieldValues);
+  };
+
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
       <div className="max-w-md w-full mx-4 flex justify-between">
         {/* Left-aligned Fields */}
-        <div className="w-1/2 pr-2">
+        <div className="w-1/2 pr-1">
           <Field
             label="Bungalow type"
             type="text"
@@ -101,10 +120,104 @@ function App() {
         </div>
         
         {/* Right-aligned Fields */}
-        <div className="w-1/2 pl-2">
+        <div className="w-1/2 pl-1 ml-5">
+          <Field
+            label="Total Land Area (Sq. Ft.)"
+            type="text"
+            placeholder="Enter Total Land Area (Sq. Ft.)"
+            value={fieldValues.totalLandArea}
+            onChange={(e) => handleInputChange('totalLandArea', e.target.value)}
+          
+          
+          />
+          <Field
+            label="Total BuiltUp Area (Sq. Ft.)"
+            type="text"
+            placeholder="EnterTotal BuiltUp Area (Sq. Ft.)"
+            value={fieldValues.totalBuiltUpArea}
+            onChange={(e) => handleInputChange('totalBuiltUpArea', e.target.value)}
+          
+          
+          />
+          <Field
+            label="Base BuiltUp Rate"
+            type="text"
+            placeholder="Enter Base BuiltUp Rate"
+            value={fieldValues.baseBuiltUpRate}
+            onChange={(e) => handleInputChange('baseBuiltUpRate', e.target.value)}
+          
+          
+          />
+          <Field
+            label="Current land rate as per market"
+            type="text"
+            placeholder="Current land rate as per market"
+            value={fieldValues.currentLandRate}
+            onChange={(e) => handleInputChange('currentLandRate', e.target.value)}
+          
+          
+          />
+          <Field
+            label="Development Charge"
+            type="text"
+            placeholder="Enter Development Charge"
+            value={fieldValues.developmentCharge}
+            onChange={(e) => handleInputChange('developmentCharge', e.target.value)}
+          
+          
+          />
+          <Field
+            label="Adjustment Factor"
+            type="text"
+            placeholder="Enter Adjustment Factor"
+            value={fieldValues.adjustmentFactor}
+            onChange={(e) => handleInputChange('adjustmentFactor', e.target.value)}
+          
+          
+          />
+          <Field
+            label="Corner Factor"
+            type="text"
+            placeholder="Enter Corner Factor"
+            value={fieldValues.cornerFactor}
+            onChange={(e) => handleInputChange('cornerFactor', e.target.value)}
+          
+          
+          />
+          <Field
+            label="Unit Adjustment Factor"
+            type="text"
+            placeholder="Enter Adjustment Factor"
+            value={fieldValues.unitAdjustmentFactor}
+            onChange={(e) => handleInputChange('unitAdjustmentFactor', e.target.value)}
+          
+          
+          />
+          <Field
+            label="Corner Facing"
+            type="text"
+            placeholder="EnterCorner Facing"
+            value={fieldValues.cornerFacing}
+            onChange={(e) => handleInputChange('cornerFacing', e.target.value)}
+          
+          
+          />
+          <Field
+            label="Additional Semi Finished "
+            type="text"
+            placeholder="Enter Additional Semi Finished Builtup "
+            value={fieldValues.additionalSemiFinishedBuiltup}
+            onChange={(e) => handleInputChange('additionalSemiFinishedBuiltup', e.target.value)}
+          
+          
+          />
          
         </div>
+      
       </div>
+      <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={handleReset}>
+        Reset
+      </button>
     </div>
   );
 }

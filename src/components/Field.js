@@ -13,6 +13,7 @@ function Field({ label, type, placeholder, value, onChange }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        style={{ width: '100%' }} 
       />
     </div>
   );
