@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Field from './components/Field';
+import Dropdown from './components/DropDown';
 
 function App() {
 
@@ -45,12 +46,12 @@ function App() {
     <div className="bg-gray-100 min-h-screen flex flex-col items-center ">
       <div className="max-w-md w-full mx-4 flex justify-around">
         <div className="w-1/2 pr-1">
-          <Field
+        <Dropdown
             label="Bungalow type"
-            type="text"
-            placeholder="Enter bungalow type"
+            options={['Option A', 'Option B', 'Option C']}
             value={fieldValues.bungalowType}
-            onChange={(e) => handleInputChange('bungalowType', e.target.value)}
+            onSelect={(value) => handleInputChange('bungalowType', value)}
+
           />
           <Field
             label="Number of Floors"
@@ -109,12 +110,11 @@ function App() {
             value={fieldValues.unitFillingDepth}
             onChange={(e) => handleInputChange('unitFillingDepth', e.target.value)}
           />
-          <Field
+           <Dropdown
             label="Facing Type"
-            type="text"
-            placeholder="Enter facing type"
+            options={['North', 'South', 'East', 'West']}
             value={fieldValues.facingType}
-            onChange={(e) => handleInputChange('facingType', e.target.value)}
+            onSelect={(value) => handleInputChange('facingType', value)}
           />
         </div>
         
@@ -192,14 +192,11 @@ function App() {
           
           
           />
-          <Field
+           <Dropdown
             label="Corner Facing"
-            type="text"
-            placeholder="EnterCorner Facing"
+            options={['Option 1', 'Option 2', 'Option 3']}
             value={fieldValues.cornerFacing}
-            onChange={(e) => handleInputChange('cornerFacing', e.target.value)}
-          
-          
+            onSelect={(value) => handleInputChange('cornerFacing', value)}
           />
           <Field
             label="Additional Semi Finished "
