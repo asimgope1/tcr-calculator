@@ -44,7 +44,6 @@ function App() {
   return (
     <div className="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
       <div className="max-w-md w-full mx-4 flex justify-between">
-        {/* Left-aligned Fields */}
         <div className="w-1/2 pr-1">
           <Field
             label="Bungalow type"
@@ -206,7 +205,7 @@ function App() {
             label="Additional Semi Finished "
             type="text"
             placeholder="Enter Additional Semi Finished Builtup "
-            value={fieldValues.additionalSemiFinishedBuiltup}
+            value={fieldValues.additionalSemiFinished}
             onChange={(e) => handleInputChange('additionalSemiFinishedBuiltup', e.target.value)}
           
           
