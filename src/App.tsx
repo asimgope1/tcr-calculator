@@ -571,7 +571,7 @@ function App() {
         Reset
       </button>
       <div className="w-full flex items-center bg-gray-100 border-t-2 border-gray-200">
-  <div className="flex justify-between w-full ml-20 mt-4 mb-4">
+  <div className="flex justify-between w-full mt-4 mb-4">
     <div className="w-1/2">
       <div className="flex flex-col justify-between">
         <div className="text-gray-600">Land Price :</div>
