@@ -38,6 +38,76 @@ function App() {
   const handleReset = () => {
     setFieldValues(initialFieldValues);
   };
+  const landPrice =
+    parseInt(fieldValues.currentLandRate, 10) *
+    parseFloat(fieldValues.totalLandArea);
+  const buildingPrice =
+    parseInt(fieldValues.baseBuiltUpRate, 10) *
+    parseFloat(fieldValues.totalBuiltUpArea);
+  const unitAdjustmentFactor = parseFloat(fieldValues.unitAdjustmentFactor);
+  const unitAdjustmentFactorPrice = buildingPrice * unitAdjustmentFactor;
+  const adjustmentFactor = parseFloat(fieldValues.adjustmentFactor);
+  const adjustmentFactorPrice = buildingPrice * adjustmentFactor;
+  const cornerFactor = parseFloat(fieldValues.cornerFactor);
+  const cornerFactorPrice = buildingPrice * cornerFactor;
+  const cornerFacing = fieldValues.cornerFacing === "Yes";
+  const cornerFacingPrice = cornerFacing ? 100000 : 0;
+  const additionalSemiFinishedBuiltup = parseFloat(
+    fieldValues.additionalSemiFinishedBuiltup
+  );
+  const additionalSemiFinishedBuiltupPrice =
+    additionalSemiFinishedBuiltup * 1000;
+  const facingType = fieldValues.facingType;
+  const facingTypePrice = facingType === "North" ? 100000 : 0;
+  const remotenessFactor = parseFloat(fieldValues.remotenessFactor);
+  const remotenessFactorPrice = remotenessFactor * 100000;
+  const numberOfFloors = parseInt(fieldValues.numberOfFloors, 10);
+  const numberOfFloorsPrice = numberOfFloors * 100000;
+  const bungalowType = fieldValues.bungalowType;
+  const bungalowTypePrice =
+    bungalowType === "Raw"
+      ? 0
+      : bungalowType === "Economy"
+      ? 100000
+      : bungalowType === "Delux"
+      ? 200000
+      : bungalowType === "SuperDelux"
+      ? 300000
+      : bungalowType === "Luxury"
+      ? 400000
+      : 500000;
+  const landRateAtPurchase = parseInt(fieldValues.landRateAtPurchase, 10);
+  const landRateAtPurchasePrice = landRateAtPurchase * 100000;
+  const landValueSellFactor = parseFloat(fieldValues.landValueSellFactor);
+  const landValueSellFactorPrice = landValueSellFactor * 100000;
+  const developmentCharge = parseInt(fieldValues.developmentCharge, 10);
+  const developmentChargePrice = developmentCharge * 100000;
+  const legalCharge = parseInt(fieldValues.legalCharge, 10);
+  const legalChargePrice = legalCharge * 100000;
+  const fillingRate = parseInt(fieldValues.fillingRate, 10);
+  const fillingRatePrice = fillingRate * 100000;
+  const projectManagementCost = parseInt(fieldValues.projectManagementCost, 10);
+  const projectManagementCostPrice = projectManagementCost * 100000;
+  const unitFillingDepth = parseInt(fieldValues.unitFillingDepth, 10);
+  const unitFillingDepthPrice = unitFillingDepth * 100000;
+  const totalLandArea = parseInt(fieldValues.totalLandArea, 10);
+  const totalLandAreaPrice = totalLandArea * 100000;
+  const totalBuiltUpArea = parseInt(fieldValues.totalBuiltUpArea, 10);
+  const totalBuiltUpAreaPrice = totalBuiltUpArea * 100000;
+  const baseBuiltUpRate = parseInt(fieldValues.baseBuiltUpRate, 10);
+  const baseBuiltUpRatePrice = baseBuiltUpRate * 100000;
+  const currentLandRate = parseInt(fieldValues.currentLandRate, 10);
+  const currentLandRatePrice = currentLandRate * 100000;
+  const landPriceAtPurchase = landRateAtPurchase * totalLandArea;
+  const landPriceAtCurrent = currentLandRate * totalLandArea;
+  const subTotal =
+    landPriceAtCurrent +
+    landPriceAtPurchase +
+    bungalowTypePrice +
+    numberOfFloorsPrice +
+    remotenessFactorPrice ;
+   
+
 
   return (
     <div className="bg-white-100 min-h-screen flex flex-col items-center ">
@@ -100,11 +170,11 @@ function App() {
                 const newValue =
                   currentValue >= 0 && currentValue < 1
                     ? currentValue + 0.1
-                    : 1; 
+                    : 1;
 
                 return {
                   ...prevValues,
-                  remotenessFactor: String(newValue.toFixed(1)), 
+                  remotenessFactor: String(newValue.toFixed(1)),
                 };
               });
             }}
@@ -115,76 +185,81 @@ function App() {
                 const newValue =
                   currentValue > 0 && currentValue <= 1
                     ? currentValue - 0.1
-                    : 0; 
+                    : 0;
 
                 return {
                   ...prevValues,
-                  remotenessFactor: String(newValue.toFixed(1)), 
+                  remotenessFactor: String(newValue.toFixed(1)),
                 };
               });
             }}
           />
 
-<Field
-  label="Land Rate at Purchase"
-  type="text"
-  placeholder="Enter land rate at purchase"
-  value={fieldValues.landRateAtPurchase}
-  onChange={(e) => handleInputChange("landRateAtPurchase", e.target.value)}
-  onIncrement={() => {
-    setFieldValues((prevValues) => ({
-      ...prevValues,
-      landRateAtPurchase: String(
-        (parseInt(prevValues.landRateAtPurchase as string, 10) || 0) + 1
-      ),
-    }));
-  }}
-  onDecrement={() => {
-    setFieldValues((prevValues) => {
-      const currentValue =
-        parseInt(prevValues.landRateAtPurchase as string, 10) || 0;
-      const newValue = currentValue > 1000 ? currentValue - 1 : 1000; // Set minimum value as 1000
+          <Field
+            label="Land Rate at Purchase"
+            type="text"
+            placeholder="Enter land rate at purchase"
+            value={fieldValues.landRateAtPurchase}
+            onChange={(e) =>
+              handleInputChange("landRateAtPurchase", e.target.value)
+            }
+            onIncrement={() => {
+              setFieldValues((prevValues) => ({
+                ...prevValues,
+                landRateAtPurchase: String(
+                  (parseInt(prevValues.landRateAtPurchase as string, 10) || 0) +
+                    1
+                ),
+              }));
+            }}
+            onDecrement={() => {
+              setFieldValues((prevValues) => {
+                const currentValue =
+                  parseInt(prevValues.landRateAtPurchase as string, 10) || 0;
+                const newValue = currentValue > 1000 ? currentValue - 1 : 1000; // Set minimum value as 1000
 
-      return {
-        ...prevValues,
-        landRateAtPurchase: String(newValue),
-      };
-    });
-  }}
-/>
+                return {
+                  ...prevValues,
+                  landRateAtPurchase: String(newValue),
+                };
+              });
+            }}
+          />
 
-<Field
-  label="Land value sell factor"
-  type="text"
-  placeholder="Enter land value sell factor"
-  value={fieldValues.landValueSellFactor}
-  onChange={(e) => {
-    const value = parseFloat(e.target.value);
-    if (!isNaN(value) && value >= 0 && value <= 1) {
-      handleInputChange("landValueSellFactor", String(value));
-    }
-  }}
-  onIncrement={() => {
-    setFieldValues((prevValues) => {
-      const currentValue = parseFloat(prevValues.landValueSellFactor) || 0;
-      const newValue = currentValue < 1 ? currentValue + 0.1 : 1;
-      return {
-        ...prevValues,
-        landValueSellFactor: String(newValue.toFixed(1)),
-      };
-    });
-  }}
-  onDecrement={() => {
-    setFieldValues((prevValues) => {
-      const currentValue = parseFloat(prevValues.landValueSellFactor) || 0;
-      const newValue = currentValue > 0 ? currentValue - 0.1 : 0;
-      return {
-        ...prevValues,
-        landValueSellFactor: String(newValue.toFixed(1)),
-      };
-    });
-  }}
-/>
+          <Field
+            label="Land value sell factor"
+            type="text"
+            placeholder="Enter land value sell factor"
+            value={fieldValues.landValueSellFactor}
+            onChange={(e) => {
+              const value = parseFloat(e.target.value);
+              if (!isNaN(value) && value >= 0 && value <= 1) {
+                handleInputChange("landValueSellFactor", String(value));
+              }
+            }}
+            onIncrement={() => {
+              setFieldValues((prevValues) => {
+                const currentValue =
+                  parseFloat(prevValues.landValueSellFactor) || 0;
+                const newValue = currentValue < 1 ? currentValue + 0.1 : 1;
+                return {
+                  ...prevValues,
+                  landValueSellFactor: String(newValue.toFixed(1)),
+                };
+              });
+            }}
+            onDecrement={() => {
+              setFieldValues((prevValues) => {
+                const currentValue =
+                  parseFloat(prevValues.landValueSellFactor) || 0;
+                const newValue = currentValue > 0 ? currentValue - 0.1 : 0;
+                return {
+                  ...prevValues,
+                  landValueSellFactor: String(newValue.toFixed(1)),
+                };
+              });
+            }}
+          />
 
           <Field
             label="Legal Charge"
@@ -453,108 +528,119 @@ function App() {
               });
             }}
           />
-       <Field
-  label="Adjustment Factor"
-  type="text"
-  placeholder="Enter Adjustment Factor"
-  value={fieldValues.adjustmentFactor}
-  onChange={(e) => handleInputChange("adjustmentFactor", e.target.value)}
-  onIncrement={() => {
-    setFieldValues((prevValues) => {
-      const currentValue =
-        parseFloat(prevValues.adjustmentFactor as string) || 0;
-      const newValue = currentValue >= 1 ? 1 : Math.min(currentValue + 0.1, 1);
+          <Field
+            label="Adjustment Factor"
+            type="text"
+            placeholder="Enter Adjustment Factor"
+            value={fieldValues.adjustmentFactor}
+            onChange={(e) =>
+              handleInputChange("adjustmentFactor", e.target.value)
+            }
+            onIncrement={() => {
+              setFieldValues((prevValues) => {
+                const currentValue =
+                  parseFloat(prevValues.adjustmentFactor as string) || 0;
+                const newValue =
+                  currentValue >= 1 ? 1 : Math.min(currentValue + 0.1, 1);
 
-      return {
-        ...prevValues,
-        adjustmentFactor: String(newValue.toFixed(1)),
-      };
-    });
-  }}
-  onDecrement={() => {
-    setFieldValues((prevValues) => {
-      const currentValue =
-        parseFloat(prevValues.adjustmentFactor as string) || 0;
-      const newValue = currentValue <= 0 ? 0 : Math.max(currentValue - 0.1, 0);
+                return {
+                  ...prevValues,
+                  adjustmentFactor: String(newValue.toFixed(1)),
+                };
+              });
+            }}
+            onDecrement={() => {
+              setFieldValues((prevValues) => {
+                const currentValue =
+                  parseFloat(prevValues.adjustmentFactor as string) || 0;
+                const newValue =
+                  currentValue <= 0 ? 0 : Math.max(currentValue - 0.1, 0);
 
-      return {
-        ...prevValues,
-        adjustmentFactor: String(newValue.toFixed(1)),
-      };
-    });
-  }}
-/>
+                return {
+                  ...prevValues,
+                  adjustmentFactor: String(newValue.toFixed(1)),
+                };
+              });
+            }}
+          />
 
-<Field
-  label="Corner Factor"
-  type="text"
-  placeholder="Enter Corner Factor"
-  value={fieldValues.cornerFactor}
-  onChange={(e) => {
-    const newValue = parseFloat(e.target.value);
-    if (!isNaN(newValue) && newValue >= 0 && newValue <= 1) {
-      handleInputChange("cornerFactor", newValue.toString());
-    }
-  }}
-  onIncrement={() => {
-    setFieldValues((prevValues) => {
-      const currentValue = parseFloat(prevValues.cornerFactor as string) || 0;
-      const newValue = currentValue + 0.1 <= 1 ? currentValue + 0.1 : 1;
+          <Field
+            label="Corner Factor"
+            type="text"
+            placeholder="Enter Corner Factor"
+            value={fieldValues.cornerFactor}
+            onChange={(e) => {
+              const newValue = parseFloat(e.target.value);
+              if (!isNaN(newValue) && newValue >= 0 && newValue <= 1) {
+                handleInputChange("cornerFactor", newValue.toString());
+              }
+            }}
+            onIncrement={() => {
+              setFieldValues((prevValues) => {
+                const currentValue =
+                  parseFloat(prevValues.cornerFactor as string) || 0;
+                const newValue =
+                  currentValue + 0.1 <= 1 ? currentValue + 0.1 : 1;
 
-      return {
-        ...prevValues,
-        cornerFactor: newValue.toFixed(1),
-      };
-    });
-  }}
-  onDecrement={() => {
-    setFieldValues((prevValues) => {
-      const currentValue = parseFloat(prevValues.cornerFactor as string) || 0;
-      const newValue = currentValue - 0.1 >= 0 ? currentValue - 0.1 : 0;
+                return {
+                  ...prevValues,
+                  cornerFactor: newValue.toFixed(1),
+                };
+              });
+            }}
+            onDecrement={() => {
+              setFieldValues((prevValues) => {
+                const currentValue =
+                  parseFloat(prevValues.cornerFactor as string) || 0;
+                const newValue =
+                  currentValue - 0.1 >= 0 ? currentValue - 0.1 : 0;
 
-      return {
-        ...prevValues,
-        cornerFactor: newValue.toFixed(1),
-      };
-    });
-  }}
-/>
+                return {
+                  ...prevValues,
+                  cornerFactor: newValue.toFixed(1),
+                };
+              });
+            }}
+          />
 
+          <Field
+            label="Unit Adjustment Factor"
+            type="text"
+            placeholder="Enter Adjustment Factor"
+            value={fieldValues.unitAdjustmentFactor}
+            onChange={(e) => {
+              const newValue = parseFloat(e.target.value);
+              if (!isNaN(newValue) && newValue >= 0 && newValue <= 1) {
+                handleInputChange("unitAdjustmentFactor", newValue.toString());
+              }
+            }}
+            onIncrement={() => {
+              setFieldValues((prevValues) => {
+                const currentValue =
+                  parseFloat(prevValues.unitAdjustmentFactor as string) || 0;
+                const newValue =
+                  currentValue + 0.1 <= 1 ? currentValue + 0.1 : 1;
 
-<Field
-  label="Unit Adjustment Factor"
-  type="text"
-  placeholder="Enter Adjustment Factor"
-  value={fieldValues.unitAdjustmentFactor}
-  onChange={(e) => {
-    const newValue = parseFloat(e.target.value);
-    if (!isNaN(newValue) && newValue >= 0 && newValue <= 1) {
-      handleInputChange("unitAdjustmentFactor", newValue.toString());
-    }
-  }}
-  onIncrement={() => {
-    setFieldValues((prevValues) => {
-      const currentValue = parseFloat(prevValues.unitAdjustmentFactor as string) || 0;
-      const newValue = currentValue + 0.1 <= 1 ? currentValue + 0.1 : 1;
+                return {
+                  ...prevValues,
+                  unitAdjustmentFactor: newValue.toFixed(1),
+                };
+              });
+            }}
+            onDecrement={() => {
+              setFieldValues((prevValues) => {
+                const currentValue =
+                  parseFloat(prevValues.unitAdjustmentFactor as string) || 0;
+                const newValue =
+                  currentValue - 0.1 >= 0 ? currentValue - 0.1 : 0;
 
-      return {
-        ...prevValues,
-        unitAdjustmentFactor: newValue.toFixed(1),
-      };
-    });
-  }}
-  onDecrement={() => {
-    setFieldValues((prevValues) => {
-      const currentValue = parseFloat(prevValues.unitAdjustmentFactor as string) || 0;
-      const newValue = currentValue - 0.1 >= 0 ? currentValue - 0.1 : 0;
-
-      return {
-        ...prevValues,
-        unitAdjustmentFactor: newValue.toFixed(1),
-      };
-    });
-  }}
-/>
+                return {
+                  ...prevValues,
+                  unitAdjustmentFactor: newValue.toFixed(1),
+                };
+              });
+            }}
+          />
 
           <Dropdown
             label="Corner Facing"
@@ -609,20 +695,40 @@ function App() {
         <div className="flex justify-between w-full mt-4 mb-4">
           <div className="w-1/2">
             <div className="flex flex-col justify-between">
-              <div className="text-gray-600">Land Price :</div>
-              <div className="text-gray-600">Sub Total :</div>
-              <div className="text-gray-600">Facing Charge :  INR 0</div>
-              <div className="text-gray-600">Remoteness Charge : </div>
-              <div className="text-gray-600">Project Adjustment Charge :</div>
+              <div className="text-gray-600">Land Price :{landPrice}</div>
+              <div className="text-gray-600">Sub Total :{subTotal}</div>
+              <div className="text-gray-600">
+                Facing Charge : {facingTypePrice}
+              </div>
+              <div className="text-gray-600">
+                Remoteness Charge : {remotenessFactorPrice}
+              </div>
+              <div className="text-gray-600">
+                Project Adjustment Charge :{adjustmentFactorPrice}
+              </div>
             </div>
           </div>
           <div className="w-1/2">
             <div className="flex flex-col justify-between">
-              <div className="text-gray-600">Unit Adjustment Factor :</div>
-              <div className="text-gray-600">Building Price :</div>
-              <div className="text-gray-600">Corner Charge :</div>
-              <div className="text-gray-600">Filling Charge :</div>
-              <div className="text-gray-600">Project Management Cost :</div>
+              <div className="text-gray-600">
+                Unit Adjustment Factor :{unitAdjustmentFactorPrice}
+              </div>
+
+              <div className="text-gray-600">
+                Building Price :{buildingPrice}
+              </div>
+
+              <div className="text-gray-600">
+                Corner Charge :{cornerFactorPrice}
+              </div>
+
+              <div className="text-gray-600">
+                Filling Charge :{fillingRatePrice}
+              </div>
+
+              <div className="text-gray-600">
+                Project Management Cost :{projectManagementCostPrice}
+              </div>
             </div>
           </div>
         </div>
@@ -633,7 +739,18 @@ function App() {
         style={{ height: "100px" }}
       >
         {" "}
-        Grand Total:
+        Grand Total:{
+          landPrice +
+          subTotal +
+          facingTypePrice +
+          remotenessFactorPrice +
+          adjustmentFactorPrice +
+          unitAdjustmentFactorPrice +
+          buildingPrice +
+          cornerFactorPrice +
+          fillingRatePrice +
+          projectManagementCostPrice
+        }
       </div>
     </div>
   );
