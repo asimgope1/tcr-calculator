@@ -25,7 +25,6 @@ const Field: React.FC<FieldProps> = ({
         {label}
       </label>
       <div className="flex items-center">
-        <button className="text-gray-600" onClick={onDecrement}>-</button>
         <input
           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           id={label}
@@ -35,7 +34,21 @@ const Field: React.FC<FieldProps> = ({
           onChange={onChange}
           style={{ width: '100%' }}
         />
+        <div className='
+        flex flex-col
+        justify-center
+        w-8
+        h-10
+        bg-gray-100
+        text-gray-900
+        font-bold
+        ml-4
+
+        '>
+        <button className="text-gray-600" onClick={onDecrement}>-</button>
+
         <button className="text-gray-600" onClick={onIncrement}>+</button>
+        </div>
       </div>
     </div>
   );
