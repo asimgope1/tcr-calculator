@@ -8,7 +8,7 @@ function App() {
     numberOfFloors: "1",
     remotenessFactor: "0.0",
     landRateAtPurchase: "1000",
-    landValueSellFactor: "",
+    landValueSellFactor: "0.0",
     legalCharge: "1",
     fillingRate: "1",
     projectManagementCost: "1",
@@ -153,36 +153,38 @@ function App() {
   }}
 />
 
-          <Field
-            label="Land value sell factor"
-            type="text"
-            placeholder="Enter land value sell factor"
-            value={fieldValues.landValueSellFactor}
-            onChange={(e) =>
-              handleInputChange("landValueSellFactor", e.target.value)
-            }
-            onIncrement={() => {
-              setFieldValues((prevValues) => ({
-                ...prevValues,
-                landValueSellFactor: String(
-                  (parseInt(prevValues.landValueSellFactor as string, 10) ||
-                    0) + 1
-                ),
-              }));
-            }}
-            onDecrement={() => {
-              setFieldValues((prevValues) => {
-                const currentValue =
-                  parseInt(prevValues.landValueSellFactor as string, 10) || 0;
-                const newValue = currentValue > 0 ? currentValue - 1 : 0;
-
-                return {
-                  ...prevValues,
-                  landValueSellFactor: String(newValue),
-                };
-              });
-            }}
-          />
+<Field
+  label="Land value sell factor"
+  type="text"
+  placeholder="Enter land value sell factor"
+  value={fieldValues.landValueSellFactor}
+  onChange={(e) => {
+    const value = parseFloat(e.target.value);
+    if (!isNaN(value) && value >= 0 && value <= 1) {
+      handleInputChange("landValueSellFactor", String(value));
+    }
+  }}
+  onIncrement={() => {
+    setFieldValues((prevValues) => {
+      const currentValue = parseFloat(prevValues.landValueSellFactor) || 0;
+      const newValue = currentValue < 1 ? currentValue + 0.1 : 1;
+      return {
+        ...prevValues,
+        landValueSellFactor: String(newValue.toFixed(1)),
+      };
+    });
+  }}
+  onDecrement={() => {
+    setFieldValues((prevValues) => {
+      const currentValue = parseFloat(prevValues.landValueSellFactor) || 0;
+      const newValue = currentValue > 0 ? currentValue - 0.1 : 0;
+      return {
+        ...prevValues,
+        landValueSellFactor: String(newValue.toFixed(1)),
+      };
+    });
+  }}
+/>
 
           <Field
             label="Legal Charge"
