@@ -574,20 +574,20 @@ function App() {
   <div className="flex justify-between w-full ml-20 mt-4 mb-4">
     <div className="w-1/2">
       <div className="flex flex-col justify-between">
-        <div className="text-gray-600">Land Price</div>
-        <div className="text-gray-600">Sub Total</div>
-        <div className="text-gray-600">Facing Charge</div>
-        <div className="text-gray-600">Remoteness Charge</div>
-        <div className="text-gray-600">Project Adjustment Charge</div>
+        <div className="text-gray-600">Land Price :</div>
+        <div className="text-gray-600">Sub Total :</div>
+        <div className="text-gray-600">Facing Charge :</div>
+        <div className="text-gray-600">Remoteness Charge :</div>
+        <div className="text-gray-600">Project Adjustment Charge :</div>
       </div>
     </div>
     <div className="w-1/2">
       <div className="flex flex-col justify-between">
-        <div className="text-gray-600">Unit Adjustment Factor</div>
-        <div className="text-gray-600">Building Price</div>
-        <div className="text-gray-600">Corner Charge</div>
-        <div className="text-gray-600">Filling Charge</div>
-        <div className="text-gray-600">Project Management Cost</div>
+        <div className="text-gray-600">Unit Adjustment Factor :</div>
+        <div className="text-gray-600">Building Price :</div>
+        <div className="text-gray-600">Corner Charge :</div>
+        <div className="text-gray-600">Filling Charge :</div>
+        <div className="text-gray-600">Project Management Cost :</div>
       </div>
     </div>
   </div>
