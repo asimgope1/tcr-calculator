@@ -57,7 +57,6 @@ function App() {
             onChange={(e) =>
               handleInputChange("numberOfFloors", e.target.value)
             }
-
             onIncrement={() => {
               setFieldValues((prevValues) => ({
                 ...prevValues,
@@ -68,9 +67,10 @@ function App() {
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.numberOfFloors as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.numberOfFloors as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   numberOfFloors: String(newValue),
@@ -96,9 +96,10 @@ function App() {
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.remotenessFactor as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.remotenessFactor as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   remotenessFactor: String(newValue),
@@ -118,15 +119,17 @@ function App() {
               setFieldValues((prevValues) => ({
                 ...prevValues,
                 landRateAtPurchase: String(
-                  (parseInt(prevValues.landRateAtPurchase as string, 10) || 0) + 1
+                  (parseInt(prevValues.landRateAtPurchase as string, 10) || 0) +
+                    1
                 ),
               }));
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.landRateAtPurchase as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.landRateAtPurchase as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   landRateAtPurchase: String(newValue),
@@ -146,15 +149,17 @@ function App() {
               setFieldValues((prevValues) => ({
                 ...prevValues,
                 landValueSellFactor: String(
-                  (parseInt(prevValues.landValueSellFactor as string, 10) || 0) + 1
+                  (parseInt(prevValues.landValueSellFactor as string, 10) ||
+                    0) + 1
                 ),
               }));
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.landValueSellFactor as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.landValueSellFactor as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   landValueSellFactor: String(newValue),
@@ -179,9 +184,10 @@ function App() {
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.legalCharge as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.legalCharge as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   legalCharge: String(newValue),
@@ -205,9 +211,10 @@ function App() {
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.fillingRate as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.fillingRate as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   fillingRate: String(newValue),
@@ -227,15 +234,17 @@ function App() {
               setFieldValues((prevValues) => ({
                 ...prevValues,
                 projectManagementCost: String(
-                  (parseInt(prevValues.projectManagementCost as string, 10) || 0) + 1
+                  (parseInt(prevValues.projectManagementCost as string, 10) ||
+                    0) + 1
                 ),
               }));
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.projectManagementCost as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.projectManagementCost as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   projectManagementCost: String(newValue),
@@ -261,9 +270,10 @@ function App() {
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.unitFillingDepth as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.unitFillingDepth as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   unitFillingDepth: String(newValue),
@@ -297,9 +307,10 @@ function App() {
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.totalLandArea as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.totalLandArea as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   totalLandArea: String(newValue),
@@ -315,7 +326,6 @@ function App() {
             onChange={(e) =>
               handleInputChange("totalBuiltUpArea", e.target.value)
             }
-
             onIncrement={() => {
               setFieldValues((prevValues) => ({
                 ...prevValues,
@@ -326,9 +336,10 @@ function App() {
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.totalBuiltUpArea as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.totalBuiltUpArea as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   totalBuiltUpArea: String(newValue),
@@ -344,7 +355,6 @@ function App() {
             onChange={(e) =>
               handleInputChange("baseBuiltUpRate", e.target.value)
             }
-
             onIncrement={() => {
               setFieldValues((prevValues) => ({
                 ...prevValues,
@@ -355,9 +365,10 @@ function App() {
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.baseBuiltUpRate as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.baseBuiltUpRate as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   baseBuiltUpRate: String(newValue),
@@ -383,9 +394,10 @@ function App() {
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.currentLandRate as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.currentLandRate as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   currentLandRate: String(newValue),
@@ -405,15 +417,17 @@ function App() {
               setFieldValues((prevValues) => ({
                 ...prevValues,
                 developmentCharge: String(
-                  (parseInt(prevValues.developmentCharge as string, 10) || 0) + 1
+                  (parseInt(prevValues.developmentCharge as string, 10) || 0) +
+                    1
                 ),
               }));
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.developmentCharge as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.developmentCharge as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   developmentCharge: String(newValue),
@@ -439,9 +453,10 @@ function App() {
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.adjustmentFactor as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.adjustmentFactor as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   adjustmentFactor: String(newValue),
@@ -465,9 +480,10 @@ function App() {
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.cornerFactor as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.cornerFactor as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   cornerFactor: String(newValue),
@@ -487,15 +503,17 @@ function App() {
               setFieldValues((prevValues) => ({
                 ...prevValues,
                 unitAdjustmentFactor: String(
-                  (parseInt(prevValues.unitAdjustmentFactor as string, 10) || 0) + 1
+                  (parseInt(prevValues.unitAdjustmentFactor as string, 10) ||
+                    0) + 1
                 ),
               }));
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.unitAdjustmentFactor as string, 10) || 0;
+                const currentValue =
+                  parseInt(prevValues.unitAdjustmentFactor as string, 10) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   unitAdjustmentFactor: String(newValue),
@@ -521,15 +539,22 @@ function App() {
               setFieldValues((prevValues) => ({
                 ...prevValues,
                 additionalSemiFinishedBuiltup: String(
-                  (parseInt(prevValues.additionalSemiFinishedBuiltup as string, 10) || 0) + 1
+                  (parseInt(
+                    prevValues.additionalSemiFinishedBuiltup as string,
+                    10
+                  ) || 0) + 1
                 ),
               }));
             }}
             onDecrement={() => {
               setFieldValues((prevValues) => {
-                const currentValue = parseInt(prevValues.additionalSemiFinishedBuiltup as string, 10) || 0;
+                const currentValue =
+                  parseInt(
+                    prevValues.additionalSemiFinishedBuiltup as string,
+                    10
+                  ) || 0;
                 const newValue = currentValue > 0 ? currentValue - 1 : 0;
-            
+
                 return {
                   ...prevValues,
                   additionalSemiFinishedBuiltup: String(newValue),
